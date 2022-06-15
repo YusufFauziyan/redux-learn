@@ -1,0 +1,14 @@
+{
+    "kontaks": [
+        {
+            "id": 1,
+            "nama": "Steven Benjamin",
+            "nohp": "08571231231"
+        },
+        {
+            "id": 2,
+            "nama": "Micahel Djordan",
+            "nohp": "08581231211"
+        }
+    ]
+}
