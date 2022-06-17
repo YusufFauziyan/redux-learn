@@ -1,3 +1,19 @@
 {
-  "kontaks": []
+  "kontaks": [
+    {
+      "id": 1,
+      "nama": "YUSUF FAUZIYAN MALIK",
+      "nohp": "123456789"
+    },
+    {
+      "id": 2,
+      "nama": "Sany Noor",
+      "nohp": "12345"
+    },
+    {
+      "id": 3,
+      "nama": "YUSUF",
+      "nohp": "123456"
+    }
+  ]
 }
