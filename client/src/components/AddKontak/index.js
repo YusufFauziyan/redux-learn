@@ -19,7 +19,6 @@ function AddKontak() {
 
   useEffect(() => {
     if(addKontakResult) {
-      console.log('5. Masuk component did update');
       dispatch(getListKontak())
     }
   }, [addKontakResult, dispatch])

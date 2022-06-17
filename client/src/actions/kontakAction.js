@@ -2,6 +2,7 @@ import axios from 'axios'
 
 export const GET_LIST_KONTAK = "GET_LIST_KONTAK"
 export const ADD_KONTAK = "ADD_KONTAK"
+export const DELETE_KONTAK = "DELETE_KONTAK"
 
 export const getListKontak = () => {
     return(dispatch) => {
@@ -47,7 +48,6 @@ export const getListKontak = () => {
 }
 
 export const addKontak = (data) => {
-    console.log("2. Masuk action");
     return(dispatch) => {
         //loading
         dispatch({
@@ -68,7 +68,6 @@ export const addKontak = (data) => {
         })
             .then((response) => {
                 //berhasil get API
-                console.log("3. Berhasil mendapatkan data: ", response.data);
                 dispatch({
                     type: ADD_KONTAK,
                     payload: {
@@ -80,9 +79,54 @@ export const addKontak = (data) => {
             })
             .catch((err) => {
                 // gagal get API
-                console.log("3.Gagal mendapatkan data: ", err);
                 dispatch({
                     type: ADD_KONTAK,
+                    payload: {
+                        loading: false,
+                        data: false,
+                        errorMessage: err.message
+                    } 
+                })
+            })
+    }
+}
+
+export const deleteKontak = (id) => {
+    console.log("2. Masuk action");
+    return(dispatch) => {
+        //loading
+        dispatch({
+            type: DELETE_KONTAK,
+            payload: {
+                loading: true,
+                data: false,
+                errorMessage: false
+            }
+        })
+
+        //get API
+        axios({
+            method: 'DELETE',
+            url: `http://localhost:5000/kontaks/${id}`,
+            timeout: 120000
+        })
+            .then((response) => {
+                //berhasil get API
+                console.log("3. Berhasil mendapatkan data: ", response.data);
+                dispatch({
+                    type: DELETE_KONTAK,
+                    payload: {
+                        loading: false,
+                        data: response.data,
+                        errorMessage: false
+                    }
+                })
+            })
+            .catch((err) => {
+                // gagal get API
+                console.log("3.Gagal mendapatkan data: ", err);
+                dispatch({
+                    type: DELETE_KONTAK,
                     payload: {
                         loading: false,
                         data: false,
